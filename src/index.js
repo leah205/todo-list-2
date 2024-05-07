@@ -174,14 +174,20 @@ function refreshSubmitChangesButton(){
 const filterDateSelect = document.querySelector("#filter-date");
 filterDateSelect.addEventListener("change", () => {
     resetTodoContainer();
-    findSelectedProject().filterProject("dateStatus", filterDateSelect.value);
+    applyFilters();
 });
 
 const filterPrioritySelect = document.querySelector("#filter-priority");
 filterPrioritySelect.addEventListener("change", () => {
     resetTodoContainer();
-    findSelectedProject().filterProject("priority", filterPrioritySelect.value);
+    applyFilters();
+
 });
+
+function applyFilters(){
+    findSelectedProject().filterProject("priority", filterPrioritySelect.value,
+    "dateStatus", filterDateSelect.value);
+}
 
 function resetFilters(){
     filterDateSelect.value = ""

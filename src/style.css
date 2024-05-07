@@ -76,7 +76,6 @@ table {
     grid-template-areas: 
         "sidebar header"
         "sidebar main";
-
 }
 .blur{
     filter: blur(9px);
@@ -193,8 +192,13 @@ input[type = "checkbox"]{
     width: 20px;
 }
 
-.todo-container{
+.todo-list-container{
     grid-area: main;
+    
+}
+.todo-container{
+    height: 70vh;
+    overflow-y: scroll;
 }
 
 .add-task-btn, .project-btn, .details-section .edit-task{

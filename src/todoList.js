@@ -40,18 +40,34 @@ export default function createTodoList(project){
         
     };
 
-    function filterProject(attribute, value){
-        if(value === "All" || !value){
-            displayList(this.todoList);
+    function filterProject(...args){
+        
+        const attributeArr = args.filter((arg) => args.indexOf(arg) % 2 === 0);
+        const valueArr = args.filter((arg) => args.indexOf(arg)% 2 === 1);
+
+        let filteredArr = this.todoList;
+
+        for(let i = 0; i < attributeArr.length; i++){
+            
+            let attribute = attributeArr[i];
+            let value = valueArr[i];
+            console.log(attribute);
+            console.log(value);
+
+            if(value === "All" || !value){
+                break;
+            }
+            else{
+                filteredArr = filteredArr.filter((item) => {
+                return item[attribute].includes(value) || item[attribute] === value;
+            });
+            
+            };
         }
-        else{
-            const filteredArr = this.todoList.filter((item) => {
-            return item[attribute].includes(value) || item[attribute] === value;
-        });
-            displayList(filteredArr);
-        
-        };
-        
+        console.log(filteredArr);
+        console.log("hello");
+    
+        displayList(filteredArr);
         
     }
 

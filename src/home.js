@@ -14,7 +14,6 @@ function createDefaultProject(){
 };
 
 let defaultProject = createDefaultProject("Home");
-console.log(defaultProject.selected);
 addProject(defaultProject);
 
 

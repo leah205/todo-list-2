@@ -2,7 +2,7 @@ import checkIcon from "../images/checkmark.svg";
 
 
 
-const todoListContainer = document.querySelector(".todo-list-container");
+const todoListContainer = document.querySelector(".todo-container");
 
 function removeAllChildren(container){
     while(container.firstChild){
