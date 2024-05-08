@@ -1,10 +1,17 @@
 
+
 let projectsArr = [];
 
+
 function addProject(project){
+    console.log(projectsArr);
     projectsArr.push(project);
     //displayProjects(projectsArr);
 };
+
+function getProjectsArr(){
+    return projectsArr;
+}
 
 function findSelectedProject(){
     for(let project of projectsArr){
@@ -30,5 +37,14 @@ function removeProject(name){
     //displayProjects(projectsArr);
 }
 
-export {addProject, removeProject, findSelectedProject, changeSelectedProject, isDeletedProject};
+function getProject(name){
+    for(let proj of projectsArr){
+        if(proj.project === name){
+            return proj;
+        }
+    }
+
+}
+
+export {addProject, removeProject, findSelectedProject, changeSelectedProject, isDeletedProject, getProjectsArr, getProject};
 

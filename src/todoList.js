@@ -2,6 +2,8 @@
 import { createTodoNode } from "./display/task-display.js";
 import createTodoItem from "./todoItem.js";
 import { addTaskToHome, completeTaskFromHome , replaceTaskFromHome} from "./home.js";
+import {updateStorage} from "./storage.js";
+import {getProject} from "./projects.js";
 
 
 export default function createTodoList(project){
@@ -32,13 +34,22 @@ export default function createTodoList(project){
 
     function addTask(...args){
         //make sure no problem if add project named home(Error);
-       if(!("isDefault" in this)){
-            addTaskToHome(...args);
-        }
+       
         let todo = createTodoItem(...args);
         this.todoList.push(todo);
-        
+
+        if(!("isDefault" in this)){
+            addTaskToHome(...args);
+        }
+        updateStorage(); 
     };
+
+    function restoreTask(...args){
+        let todo = createTodoItem(...args);
+        this.todoList.push(todo);
+        console.log();
+        updateStorage(); 
+    }
 
     function filterProject(...args){
         
@@ -64,8 +75,7 @@ export default function createTodoList(project){
             
             };
         }
-        console.log(filteredArr);
-        console.log("hello");
+     
     
         displayList(filteredArr);
         
@@ -82,5 +92,5 @@ export default function createTodoList(project){
         return this.todoList[index];
     }
 
-    return {project, completeTask, addTask, todoList, selected, updateListDisplay, getTask, replaceTask, filterProject};
+    return {project, completeTask, addTask, todoList, selected, updateListDisplay, getTask, replaceTask, filterProject, restoreTask};
 }

@@ -8,7 +8,12 @@ displayDeleteProjectButton, hideDeleteProjectButton, getNewProjectName,
 deleteProjectDisplay, displaySelectedProject} from "./display/project-display.js";
 import {addProject} from "./projects.js";
 import {viewTaskDetails, closeTaskDetails, editViewedTask, getViewedTask} from "./display/details.js";
-//import {filterProject} from "./filter.js";
+import { loadPage, updateStorage} from "./storage.js";
+import {addTaskToHome} from "./home.js"
+
+
+//localStorage.clear();
+loadPage();
 
 const addTaskBtn = document.querySelector(".add-task-btn");
 addTaskBtn.addEventListener("click", () => {
@@ -25,6 +30,9 @@ function handleSubmitTask(){
     let [title, date, description, priority] = getTaskDetails();
     removeAddTaskSection();
     findSelectedProject().addTask(title, date, description, priority);
+    /*if(findSelectedProject().project !== "Home"){
+        addTaskToHome(title, date, description, priority)
+    }*/
     displayTodos();
     
 }
@@ -49,6 +57,7 @@ addProjectButton.addEventListener("click", () => {
 const submitProjectButton = document.querySelector(".add-project-section button:first-of-type");
 submitProjectButton.addEventListener("click", () => {
     addProject(createTodoList(getNewProjectName()));
+    updateStorage();
     displayNewProject(getNewProjectName());
     removeAddProjectDisplay();
     addProjectEventListeners();

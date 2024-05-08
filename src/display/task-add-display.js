@@ -24,6 +24,7 @@ function addExistingValues(todo){
 
 function getTaskDetails(){
     console.log(titleInput.value);
+    
     return [titleInput.value, dateInput.value, descriptionInput.value, priorityInput];  
 };
 
