@@ -174,6 +174,7 @@ function refreshSubmitChangesButton(){
         displayTodos();
         submitChangesButton.removeEventListener("click", handleClickSubmitChanges);
         addTodoEventListeners();
+        updateStorage();
 
     }
    
@@ -201,6 +202,9 @@ function applyFilters(){
 function resetFilters(){
     filterDateSelect.value = ""
 }
+
+
+export {addTodoEventListeners};
 
 
 

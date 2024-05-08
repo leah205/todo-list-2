@@ -2,6 +2,7 @@ import {getProjectsArr, addProject, getProject, findSelectedProject, changeSelec
 import createTodoList, {addTask, getTask, updateListDisplay, filterProject, restoreTask} from "./todoList.js";
 import {displaySelectedProject} from "./display/project-display.js";
 import { resetTodoContainer } from "./display/task-display.js";
+import { addTodoEventListeners } from "./index.js";
 
 
 function updateStorage(){
@@ -73,6 +74,7 @@ function retrieveStorage(){
         console.log(getProject("Home"));
         resetTodoContainer();
         findSelectedProject().updateListDisplay();
+        addTodoEventListeners();
     
     //console.log(getProjectsArr());
 };
