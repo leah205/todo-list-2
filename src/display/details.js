@@ -10,7 +10,7 @@ function viewTaskDetails(task){
     const taskDate = document.querySelector(".date-details");
     taskDate.textContent = task.dueDate;
     const taskPriority = document.querySelector(".priority-details");
-    taskPriority.textContent = task.priority + "priority";
+    taskPriority.textContent = task.priority + " priority";
     const taskDescription = document.querySelector(".description-details");
     taskDescription.textContent = task.description;
     if(detailsSection.classList.contains("hidden")){
