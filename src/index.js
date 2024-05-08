@@ -211,6 +211,7 @@ function applyFilters(){
 
 function resetFilters(){
     filterDateSelect.value = ""
+    filterPrioritySelect.value = "";
 }
 
 
