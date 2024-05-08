@@ -89,13 +89,13 @@ function addTodoEventListeners(){
         const checkBox = node.querySelector(".checkmark");
         checkBox.addEventListener("click", () => {
             displayCompleteTask(checkBox);
-            console.log(node);
             //moveToCompleted()
             setTimeout(() => deleteTask(node), 500);
+            
         })
         const detailsButton = node.querySelector(".task-view-btn");
         detailsButton.addEventListener("click", () => {
-            console.log(node)
+    
             viewTaskDetails(getTaskOfNode(node));
         });
 
@@ -154,6 +154,7 @@ function deleteTask(node){
     resetTodoContainer();
     findSelectedProject().updateListDisplay();
     addTodoEventListeners();
+    updateStorage();
 };
 
 const exitDetailsButton = document.querySelector(".exit-details");
