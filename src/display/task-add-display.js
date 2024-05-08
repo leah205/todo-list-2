@@ -13,18 +13,13 @@ function addExistingValues(todo){
     descriptionInput.value = todo.description;
     titleInput.value = todo.title;
     dateInput.value = todo.rawDate;
-    console.log(titleInput.value);
     const priorityButton = document.getElementById(todo.priority);
-    console.log(descriptionInput);
     setPriority(priorityButton);
-    console.log(getTaskDetails());
 }
 
    
 
 function getTaskDetails(){
-    console.log(titleInput.value);
-    
     return [titleInput.value, dateInput.value, descriptionInput.value, priorityInput];  
 };
 
@@ -88,4 +83,16 @@ function removeAddTaskSection(){
     clearAddTaskSection();
 };
 
-export {displayAddTaskSection,removeAddTaskSection, getTaskDetails, setPriority, addExistingValues}
+function allFieldsFilled(){
+    console.log(titleInput.value && dateInput.value 
+        && descriptionInput.value && priorityInput.value);
+
+    return (titleInput.value && dateInput.value 
+    && descriptionInput.value && priorityInput);
+}
+function displayFieldError(){
+    alert("Please fill out all fields");
+}
+
+export {displayAddTaskSection,removeAddTaskSection, getTaskDetails, setPriority, addExistingValues,
+allFieldsFilled, displayFieldError}

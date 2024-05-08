@@ -1,7 +1,8 @@
 import "./style.css";
 import {findSelectedProject, removeProject, changeSelectedProject, isDeletedProject} from "./projects.js";
 import createTodoList, {addTask, getTask, updateListDisplay, filterProject} from "./todoList.js";
-import {displayAddTaskSection, removeAddTaskSection, getTaskDetails, setPriority} from "./display/task-add-display.js";
+import {displayAddTaskSection, removeAddTaskSection, getTaskDetails, setPriority, allFieldsFilled,
+displayFieldError} from "./display/task-add-display.js";
 import { resetTodoContainer, displayCompleteTask} from "./display/task-display.js";
 import {displayAddProject, removeAddProjectDisplay, getProjectName, displayNewProject,
 displayDeleteProjectButton, hideDeleteProjectButton, getNewProjectName,
@@ -23,6 +24,10 @@ addTaskBtn.addEventListener("click", () => {
 
 const submitTaskBtn = document.querySelector(".submit-task");
 function handleSubmitTask(){
+    if(!allFieldsFilled()){
+        displayFieldError();
+        return;
+    }
     if(submitTaskBtn.classList.contains("submit-edit-task")){
         return;
     }
@@ -168,6 +173,10 @@ function refreshSubmitChangesButton(){
     const submitChangesButton = document.querySelector(".submit-edit-task");
 
     function handleClickSubmitChanges(){
+        if(!allFieldsFilled()){
+            displayFieldError();
+            return;
+        }
         let detailsArr = getTaskDetails();
         findSelectedProject().replaceTask(detailsArr,getViewedTask());
         removeAddTaskSection();
